@@ -25,11 +25,4 @@ class Agente(ABC):
 
     
     def executar(self):
-        """Executar um passo de processamento do agente"""
-        # Percepcionar
-        percepcao = self._percepcionar()
-        # Controlo processa e devolve accao
-        accao = self.__controlo.processar(percepcao)
-        # Actuar apenas se houver accao
-        if accao is not None:
-            self._actuar(accao)
+        pass
