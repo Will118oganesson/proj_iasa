@@ -3,7 +3,7 @@ from agente.Accao import Accao
 class AccaoJogo(Accao):
 
     def __init__(self, comando):
-        self.comando = comando
+        self.__comando = comando
     
-    def Accao(comando):
-        pass
+    def comando(self):
+        return self.__comando

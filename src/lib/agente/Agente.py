@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 class Agente(ABC):
     
-    def _init_(self, controlo):
+    def __init__(self, controlo):
         self.__controlo = controlo
 
 
@@ -25,4 +25,7 @@ class Agente(ABC):
 
     
     def executar(self):
-        pass
+        percepcao = self._percepcionar()
+        accao = self.__controlo.processar(percepcao)
+        if accao is not None:
+            self._actuar(accao)

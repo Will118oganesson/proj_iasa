@@ -1,12 +1,12 @@
 from enum import Enum
 
 class EventoJogo(Enum):
-    SILENCIO = 's'
-    RUIDO = 'r'
-    ANIMAL = 'a'
-    FUGA = 'f'
-    FOTOGRAFIA = 'p'
-    TERMINAR = 't'
+    SILENCIO = 'silencio'
+    RUIDO = 'ruido'
+    ANIMAL = 'animal'
+    FUGA = 'fuga'
+    FOTOGRAFIA = 'fotografia'
+    TERMINAR = 'terminar'
 
     def mostrar(self):
         print(self)

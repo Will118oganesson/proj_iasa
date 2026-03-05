@@ -1,11 +1,36 @@
 from lib.agente.Controlo import Controlo
+from maqest.MaquinaEstados import MaquinaEstados
+from .EstadoPersonagem import EstadoPersonagem
+from agente.AccaoJogo import AccaoJogo
+from ambiente.ComandoJogo import ComandoJogo
+from ambiente.EventoJogo import EventoJogo
 
-TRANSICOES = []
 
 class ControloPersonagem(Controlo):
     
-    def __init__(self, percepcao):
-        self.percepcao = percepcao
+    def __init__(self):
+        #self.percepcao = percepcao
+
+        procurar = AccaoJogo(ComandoJogo.PROCURAR)
+        aproximar = AccaoJogo(ComandoJogo.APROXIMAR)
+        observar = AccaoJogo(ComandoJogo.OBSERVAR)
+        fotografar = AccaoJogo(ComandoJogo.FOTOGRAFAR)
+
+        self.__maq_est = MaquinaEstados(
+            EstadoPersonagem.PROCURA, [
+                (EstadoPersonagem.PROCURA, EventoJogo.ANIMAL,EstadoPersonagem.OBSERVACAO,aproximar),
+                (EstadoPersonagem.PROCURA, EventoJogo.RUIDO,EstadoPersonagem.INSPECCAO,aproximar),
+                (EstadoPersonagem.PROCURA, EventoJogo.SILENCIO,EstadoPersonagem.PROCURA,procurar),
+                (EstadoPersonagem.INSPECCAO, EventoJogo.ANIMAL,EstadoPersonagem.OBSERVACAO,aproximar),
+                (EstadoPersonagem.INSPECCAO, EventoJogo.RUIDO,EstadoPersonagem.INSPECCAO,procurar),
+                (EstadoPersonagem.INSPECCAO, EventoJogo.SILENCIO,EstadoPersonagem.PROCURA),
+                (EstadoPersonagem.OBSERVACAO, EventoJogo.FUGA,EstadoPersonagem.INSPECCAO),
+                (EstadoPersonagem.OBSERVACAO, EventoJogo.ANIMAL,EstadoPersonagem.REGISTO, observar),
+                (EstadoPersonagem.REGISTO, EventoJogo.ANIMAL,EstadoPersonagem.REGISTO, fotografar),
+                (EstadoPersonagem.REGISTO, EventoJogo.FUGA,EstadoPersonagem.PROCURA),
+                (EstadoPersonagem.REGISTO, EventoJogo.FOTOGRAFIA,EstadoPersonagem.PROCURA),
+            ]
+        )
     
-    def processar(self, precepcao):
-        return "Accao"
+    def processar(self, percepcao):
+        evento = percepcao.evento()

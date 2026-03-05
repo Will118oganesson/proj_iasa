@@ -3,7 +3,7 @@ from agente.Percepcao import Percepcao
 class PercecaoJogo(Percepcao):
 
     def __init__(self, evento):
-        self.evento = evento
+        self.__evento = evento
     
-    def Percecao(evento):
-        pass
+    def evento(self):
+        return self.__evento
