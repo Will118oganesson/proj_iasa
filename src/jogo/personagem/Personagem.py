@@ -23,6 +23,7 @@ class Personagem(AgenteJogo):
 
         if accao is not None:
             comando = accao.comando()
-            return f"{estado.name} -> {comando.name}"
+            return f"Estado: {estado.name} -> Ação: {comando.name}"
+            #return f"Comando: {comando.name}"
 
-        return f"{estado.name}"
+        return f"Estado: {estado.name}"
