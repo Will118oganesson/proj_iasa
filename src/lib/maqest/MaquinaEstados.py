@@ -24,3 +24,6 @@ class MaquinaEstados:
         accao = self.__tae.get((self.__estado, evento))
         return accao
 
+    def estado(self):
+        return self.__estado
+

@@ -21,11 +21,12 @@ class Agente(ABC):
         """Actuar no ambiente com a accao"""
         pass
 
-
+    def _controlo(self):
+        return self.__controlo
 
     
     def executar(self):
         percepcao = self._percepcionar()
         accao = self.__controlo.processar(percepcao)
-        if accao is not None:
-            self._actuar(accao)
+        # if accao is not None:
+            #self._actuar(accao)

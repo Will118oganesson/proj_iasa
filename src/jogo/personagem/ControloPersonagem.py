@@ -9,7 +9,7 @@ from ambiente.EventoJogo import EventoJogo
 class ControloPersonagem(Controlo):
     
     def __init__(self):
-        #self.percepcao = percepcao
+        self.__accao = None
 
         procurar = AccaoJogo(ComandoJogo.PROCURAR)
         aproximar = AccaoJogo(ComandoJogo.APROXIMAR)
@@ -31,6 +31,14 @@ class ControloPersonagem(Controlo):
                 (EstadoPersonagem.REGISTO, EventoJogo.FOTOGRAFIA,EstadoPersonagem.PROCURA),
             ]
         )
+
+    def estado(self):
+        return self.__maq_est.estado()
     
     def processar(self, percepcao):
         evento = percepcao.evento()
+        self.__accao = self.__maq_est.processar(evento)
+        return self.__accao
+    
+    def accao(self):
+        return self.__accao
