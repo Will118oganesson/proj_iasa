@@ -1,0 +1,1 @@
+#comportamento evitar obstaculo nas varias direçao

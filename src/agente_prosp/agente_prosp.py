@@ -1,21 +1,11 @@
-import sae.agente.transdutor
-from sae.agente.movimento import Movimento
-from lib.agente import Agente
+import sae
+from lib.agente.Agente import Agente
 
-class AgenteProsp:
-    def __init__(self, controlo):
-        self.__controlo = controlo
-
-    def executar(self):
-        self.percepcionar()
-
-    def percepcionar(self):
-        percepcao = sae.transdutor.percepcionar()
+class AgenteProsp(Agente):
         
-        direcao_desejada = self.pensar(percepcao)
+    def _percepcionar(self):
+        return sae.transdutor.percepcionar()
+        
 
-        movimento = Movimento(direcao_desejada, passo=1)
-        sae.transdutor.actuar(movimento)
-
-    def pensar(self, percepcao):
-        return sae.ambiente.direccao.Direccao.NORTE
+    def _actuar(self, accao):
+        sae.transdutor.actuar(accao.movimento)

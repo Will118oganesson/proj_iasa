@@ -1,0 +1,1 @@
+#explorar é um comportamente que explora com direçoes aleatorios

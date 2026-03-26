@@ -5,8 +5,6 @@ class Agente(ABC):
     def __init__(self, controlo):
         self.__controlo = controlo
 
-
-        
     
     @abstractmethod
     def _percepcionar(self):
@@ -28,5 +26,5 @@ class Agente(ABC):
     def executar(self):
         percepcao = self._percepcionar()
         accao = self.__controlo.processar(percepcao)
-        # if accao is not None:
-            #self._actuar(accao)
+        if accao is not None:
+            self._actuar(accao)

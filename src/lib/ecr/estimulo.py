@@ -1,4 +1,4 @@
 class Estimulo:
-    def detectar(percepcao):
+    def detectar(self, percepcao) -> float:
         #NOT DONE YET
         return #float
