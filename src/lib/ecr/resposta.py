@@ -1,12 +1,12 @@
-from lib.ecr.accao import Accao
-
 class Resposta:
-    def __init__(self, accao):
+    def __init__(self, accao=None):
         self._accao = accao
         
-    def activar(percepcao, intensidade=0):
-        #NOT DONE YET
-        return  #Accao
-    def _obter_accao(percepcao):
-        #NOT DONE YET
-        return
+    def activar(self, percepcao, intensidade=0):
+        accao = self._obter_accao(percepcao)
+        if accao:
+            accao.prioridade = intensidade
+        return accao 
+    
+    def _obter_accao(self, percepcao):
+        return self._accao

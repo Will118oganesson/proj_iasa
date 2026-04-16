@@ -3,7 +3,7 @@ from lib.ecr.accao import Accao
 
 class Rodar(Accao):
     def __init__(self, direccao):
-        super.__init__()
+        super().__init__()
         self._movimento = Movimento(direccao, passo=0)
 
     @property

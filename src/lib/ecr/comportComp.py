@@ -9,11 +9,20 @@ class ComportComp(Comportamento):
         accoes = []
 
         for comportamento in self.__comportamentos:
-            accao = comportamento.ativar(percepcao)
+            accao = comportamento.activar(percepcao)
             if accao:
                 accoes.append(accao)
+
+        accoes_validas = []
+        for accao in accoes:
+            if accao is not None:
+                accoes_validas.append(accao)
+        
+        if len(accoes_validas) == 0:
+            return None
+
         if accoes:
-            return self.seleccionar_accao(accoes)
+            return self.seleccionar_accao(accoes_validas)
         
     @abstractmethod
     def seleccionar_accao(self, accoes):
