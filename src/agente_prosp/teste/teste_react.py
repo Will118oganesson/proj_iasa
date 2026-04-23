@@ -9,5 +9,5 @@ if __name__ == "__main__":
     comportamento = Recolher()
     controlo = ControloReact(comportamento)
     agente = AgenteProsp(controlo)
-    simulador = Simulador(1,agente)
+    simulador = Simulador(1,agente, vista_modelo = True)
     simulador.executar()
