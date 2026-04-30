@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 
 
-from no import No
-from fronteira import Fronteira
+from .no import No
+from .fronteira import Fronteira
 from mod.problema import Problema
-from solucao import Solucao
+from .solucao import Solucao
 
 
 class MecanismoProcura(ABC):

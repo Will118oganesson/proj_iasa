@@ -1,13 +1,21 @@
+import heapq
 from mec_proc.fronteira import Fronteira
 from aval.avaliador import Avaliador
 from mec_proc.no import No
 
 class FronteiraPrioridade(Fronteira):
     def __init__(self, avaliador: Avaliador):
+        super().__init__()
         self.avaliador = avaliador
+        self._contador = 0
 
     def inserir(self, no: No):
-        raise NotImplementedError
+        no.prioridade = self.avaliador.avaliar(no)
+        self._contador += 1
+        heapq.heappush(self._dados, (no.prioridade, self._contador, no))
+        self.vazia = False
     
     def remover(self) -> No:
-        raise NotImplementedError
+        _, _, no = heapq.heappop(self._dados)
+        self.vazia = len(self._dados) == 0
+        return no

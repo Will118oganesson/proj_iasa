@@ -3,4 +3,5 @@ from pee.mec_proc.fronteira import Fronteira
 
 class FronteiraLIFO(Fronteira):
     def inserir(self, no: No):
-        return
+        self._dados.insert(0, no)
+        self.vazia = False

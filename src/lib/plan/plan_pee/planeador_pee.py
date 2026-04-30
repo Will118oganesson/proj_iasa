@@ -9,8 +9,9 @@ class PlaneadorPEE(Planeador):
     def __init__(self):
         self.__mec_pee = MecanismoPEE()
 
-        def planear(self, modelo_plan, objectivos):
-            estado_final = objetivos[0]
-            problema = ProblemaPlan(modelo_plan, estado_final)
-            heuristica = HeurDist(estado_final)
-            solucao = self.__mec_pee
+    def planear(self, modelo_plan, objetivos):
+        estado_final = objetivos[0]
+        problema = ProblemaPlan(modelo_plan, estado_final)
+        heuristica = HeurDist(estado_final)
+        solucao = self.__mec_pee.procurar(problema, heuristica)
+        return PlanoPEE(solucao)

@@ -1,4 +1,4 @@
-from no import No
+from .no import No
 
 class Solucao:
     def __init__(self, no_final: No):

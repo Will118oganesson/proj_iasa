@@ -3,4 +3,4 @@ from mec_proc.no import No
 
 class AvaliadorCustoUnif(Avaliador):
     def prioridade(self, no: No) -> float: #double
-        raise NotImplementedError
+        return no.custo

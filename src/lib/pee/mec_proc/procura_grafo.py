@@ -1,5 +1,5 @@
 from mecanismo_procura import MecanismoProcura
-from no import No
+from .no import No
 
 class ProcuraGrafo(MecanismoProcura):
     def _iniciar_memoria(self):

@@ -1,5 +1,5 @@
-from estado import Estado
-from operador import Operador
+from .estado import Estado
+from .operador import Operador
 
 class Problema:
     def __init__(self, estado_inicial: Estado, operadores: list[Operador]):

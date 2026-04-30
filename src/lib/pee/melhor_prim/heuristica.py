@@ -1,5 +1,7 @@
 from mod.estado import Estado
+from abc import ABC, abstractmethod
 
-class Heuristica:
-    def h(self, estado: Estado) -> float: #double 
-        raise NotImplementedError
+class Heuristica(ABC):
+    @abstractmethod
+    def h(self, estado: Estado) -> float:
+        pass
