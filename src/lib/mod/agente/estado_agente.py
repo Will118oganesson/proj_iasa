@@ -3,12 +3,6 @@ from sae.ambiente.posicao import Posicao
 
 class EstadoAgente(Estado):
     def __init__(self, posicao: Posicao):
-        self.__posicao = posicao
-        self.__id_valor = hash(posicao)
-
-    @property
-    def posicao(self):
-        return self.__posicao
-
+        pass
     def id_valor(self) -> int:
-        return self.__id_valor
+        pass
