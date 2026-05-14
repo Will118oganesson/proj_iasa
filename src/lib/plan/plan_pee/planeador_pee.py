@@ -17,4 +17,6 @@ class PlaneadorPEE(Planeador):
         problema = ProblemaPlan(modelo_plan, estado_final)
         heuristica = HeurDist(estado_final)
         solucao = self.__mec_pee.procurar(problema, heuristica)
-        return PlanoPEE(solucao)
+        if solucao is None:
+            return None
+        return PlanoPEE(solucao, modelo_plan.obter_estado())

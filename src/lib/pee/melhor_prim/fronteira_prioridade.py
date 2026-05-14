@@ -1,7 +1,7 @@
 import heapq
-from mec_proc.fronteira import Fronteira
-from aval.avaliador import Avaliador
-from mec_proc.no import No
+from pee.mec_proc.fronteira import Fronteira
+from pee.melhor_prim.aval.avaliador import Avaliador
+from pee.mec_proc.no import No
 
 class FronteiraPrioridade(Fronteira):
     def __init__(self, avaliador: Avaliador):

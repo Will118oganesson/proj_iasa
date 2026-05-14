@@ -1,3 +1,4 @@
+from agente_prosp.accoes.avancar import Avancar
 from plan.plan_pee.planeador_pee import PlaneadorPEE
 from lib.agente.Controlo import Controlo
 from agente.Percepcao import Percepcao
@@ -8,23 +9,21 @@ from lib import sae
 
 
 class ControloDelib(Controlo): #responsavel pelo controlo deliberativo do agente
-    def _init_(self, planeador: PlaneadorPEE):
+    def __init__(self, planeador: PlaneadorPEE):
         self.__modelo_mundo = ModeloMundo()
         self.__mec_delib = MecDelib(ModeloMundo())
-        self.__planeador = planeador
-        self.__objectivos = None
-        self.__plano = None
+        self._planeador = planeador
+        self._objectivos = None
+        self._plano = None
     #INIT DONE
 
     def processar(self, percepcao: Percepcao): #obj: processar a percepcao
-        #self assimilar percepcao
         self.__assimilar(percepcao)
         if (self.__reconsiderar()): #existe reconsiderar?:
             self.__deliberar()
             self.__planear()
         return self.__executar()
-        #return super().processar(percepcao)
-    #PROCESSAR DONE SUPPOSEDLY
+
     
     def __assimilar(self, percepcao: Percepcao): #obj: atualizr as crenças de acordo com a percepcao
         self.__modelo_mundo.actualizar(percepcao)
@@ -53,10 +52,13 @@ class ControloDelib(Controlo): #responsavel pelo controlo deliberativo do agente
                 return operador.accao
             else:
                 return None
-        return Accao
+        return Avancar
 
 
     def __mostrar(self): #obj: mostrat info interna
+        print(f"DEBUG sae.vista = {sae.vista}")
+        if sae.vista is None:
+            return
         sae.vista.limpar()
         self.__modelo_mundo.mostrar(sae.vista)
         if (self._plano):

@@ -7,8 +7,9 @@ class No:
     prioridade : int = 0
 
     #def __init__(self, estado: Estado, operador: Operador, antecessor: No, custo: float):
-    def __init__(self, estado: Estado, operador=None, antecessor=None, custo=0):
+    def __init__(self, estado: Estado, operador=None, antecessor=None, custo=0, profundidade=0):
         self.estado = estado
         self.operador = operador
         self.antecessor = antecessor
         self.custo = custo
+        self.profundidade = profundidade
